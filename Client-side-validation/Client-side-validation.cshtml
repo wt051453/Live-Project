@@ -1,0 +1,22 @@
+﻿// Add client-side validation to the worktimeevent index date pickers so that a null value is never submitted to the server in the end date field. Currently if you enter an invalid value or delete the value all together on the end date, those values are pushed to the server and the server breaks. A function was added to check for a value onblur.
+
+function validDate() {
+    var f = $('#DateUpdater');
+    if (f.valid()) {
+        f.submit();
+    }
+    else
+        alert;
+}
+
+		<div class="col-md-2" style="margin-bottom:5px">
+            @Html.EditorFor(x => x.DisplayBeginDate, new { htmlAttributes = new { @class = "form-control", type = "date", onblur = "validDate()" } })
+            @Html.ValidationMessageFor(x => x.DisplayBeginDate)
+
+        </div>
+
+        <div class="col-md-2" style="padding-bottom:5px">
+            @Html.EditorFor(x => x.DisplayEndDate, new { htmlAttributes = new { @class = "form-control", type = "date", onblur = "validDate()" } })
+            @Html.ValidationMessageFor(x => x.DisplayEndDate)
+
+        </div>
